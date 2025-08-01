@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GKPI Cimahi</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-logo-blue { background-color: #0D47A1; }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+        <div class="text-center mb-8">
+            <img src="{% static 'image/gkpi.png' %}" alt="Logo GKPI Cimahi" class="h-20 w-20 mx-auto mb-4">
+            <h1 class="text-2xl font-bold text-gray-800">Login Akun</h1>
+            <p class="text-gray-500">Selamat datang kembali di GKPI Cimahi</p>
+        </div>
+
+        <!-- Menampilkan pesan error jika ada -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Form Login dengan Styling Manual -->
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            <!-- Field Username -->
+            <div class="mb-4">
+                <label for="{{ form.username.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input 
+                    type="text" 
+                    name="{{ form.username.name }}" 
+                    id="{{ form.username.id_for_label }}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    placeholder="Masukkan username Anda">
+                <!-- Menampilkan error spesifik untuk field ini jika ada -->
+                {% for error in form.username.errors %}
+                    <p class="text-red-500 text-xs italic mt-2">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <!-- Field Password -->
+            <div class="mb-6">
+                <label for="{{ form.password.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input 
+                    type="password" 
+                    name="{{ form.password.name }}" 
+                    id="{{ form.password.id_for_label }}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                    placeholder="************">
+                <!-- Menampilkan error spesifik untuk field ini jika ada -->
+                {% for error in form.password.errors %}
+                    <p class="text-red-500 text-xs italic">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="mt-6">
+                <button type="submit" class="w-full bg-logo-blue hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300">
+                    Masuk
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center mt-6">
+            <p class="text-sm text-gray-600">
+                Belum punya akun?
+                <a href="{% url 'register' %}" class="font-bold text-blue-600 hover:text-blue-800">Daftar di sini</a>
+            </p>
+            <a href="{% url 'index' %}" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 mt-4">
+                &larr; Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

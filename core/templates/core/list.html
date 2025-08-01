@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Struktural - GKPI Cimahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-logo-blue { background-color: #0D47A1; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen bg-gray-200">
+        <!-- Sidebar -->
+        <div class="w-64 bg-logo-blue text-white p-5 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center mb-10">
+                    <img src="{% static 'image/gkpi.png' %}" alt="Logo" class="h-10 w-10 mr-3">
+                    <span class="text-xl font-bold">Dashboard GKPI</span>
+                </div>
+                <nav>
+                    <a href="{% url 'index' %}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">Beranda</a>
+                    <a href="{% url 'jemaat-list' %}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">Data Jemaat</a>
+                    <a href="{% url 'daftar_berita' %}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">Manajemen Berita</a>
+                    <a href="{% url 'galeri_foto' %}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">Manajemen Galeri</a>
+                    <a href="{% url 'struktur' %}" class="block py-2.5 px-4 rounded transition duration-200 bg-blue-700">Manajemen Struktural</a>
+                </nav>
+            </div>
+            <div>
+                 <a href="{% url 'logout' %}" class="block text-center py-2.5 px-4 rounded transition duration-200 bg-red-600 hover:bg-red-700">Logout</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="flex justify-between items-center p-6 bg-white border-b">
+                <h1 class="text-2xl font-bold text-gray-800">Manajemen Struktural Gereja</h1>
+                <a href="#" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                    + Tambah Pengurus Baru
+                </a>
+            </header>
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                            <thead class="bg-gray-200">
+                                <tr>
+                                    <th class="py-3 px-4 uppercase font-semibold text-sm text-left">Nama Lengkap</th>
+                                    <th class="py-3 px-4 uppercase font-semibold text-sm text-left">Jabatan</th>
+                                    <th class="py-3 px-4 uppercase font-semibold text-sm text-left">Periode</th>
+                                    <th class="py-3 px-4 uppercase font-semibold text-sm text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <!-- Data akan di-loop di sini dari database -->
+                                {% for pengurus in struktural_list %}
+                                <tr class="{% if forloop.counter|divisibleby:2 %}bg-gray-50{% endif %}">
+                                    <td class="py-3 px-4">{{ pengurus.nama_lengkap }}</td>
+                                    <td class="py-3 px-4">{{ pengurus.jabatan }}</td>
+                                    <td class="py-3 px-4">{{ pengurus.periode }}</td>
+                                    <td class="py-3 px-4 text-center">
+                                        <a href="#" class="text-blue-500 hover:text-blue-700 mr-2">Edit</a>
+                                        <a href="#" class="text-red-500 hover:text-red-700">Hapus</a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="py-4 px-4 text-center text-gray-500">Belum ada data struktural.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{% load static %} <!-- PERINTAH WAJIB: Tambahkan ini di baris paling atas -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Organisasi - GKPI Cimahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- PERBAIKAN: Menggunakan tag 'static' untuk memuat file CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-logo-blue { background-color: #0D47A1; }
+        .text-logo-blue { color: #0D47A1; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <!-- PERBAIKAN: Menggunakan tag 'static' untuk memuat gambar logo -->
+                    <img src="{% static 'image/gkpi.png' %}" alt="Logo GKPI Cimahi" class="h-12 w-12 mr-3">
+                    <a href="{% url 'index' %}" class="text-xl font-bold text-gray-800">GKPI Cimahi</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <!-- Memastikan semua link navigasi sudah benar -->
+                    <a href="{% url 'index' %}" class="text-gray-600 hover:text-logo-blue">Beranda</a>
+                    <a href="{% url 'daftar_berita' %}" class="text-gray-600 hover:text-logo-blue">Warta Jemaat</a>
+                    <a href="{% url 'livestream' %}" class="text-gray-600 hover:text-logo-blue">Livestream</a>
+                    <a href="{% url 'galeri_foto' %}" class="text-gray-600 hover:text-logo-blue">Galeri</a>
+                    <a href="{% url 'struktur' %}" class="text-logo-blue font-semibold">Struktural</a>
+                </div>
+                <div>
+                    <a href="{% url 'login' %}" class="bg-logo-blue text-white px-4 py-2 rounded-md hover:bg-blue-800">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Struktur Organisasi Pelayan GKPI Cimahi</h1>
+        <div class="text-center">
+            <!-- Pendeta -->
+            <div class="inline-block bg-white p-4 rounded-lg shadow-lg mb-8">
+                <img src="https://placehold.co/150x150/cccccc/ffffff?text=Foto+Pendeta" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-200">
+                <h3 class="text-xl font-bold">Pdt. D.D.A Br.Gultom</h3>
+                <p class="text-gray-600">Pendeta Resort</p>
+            </div>
+
+            <!-- Majelis/Penatua -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <!--  Penatua 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <img src="https://placehold.co/120x120/cccccc/ffffff?text=Foto" class="w-24 h-24 rounded-full mx-auto mb-3">
+                    <h4 class="font-semibold">St. [Nama Penatua 1]</h4>
+                    <p class="text-sm text-gray-500">Sektor 1</p>
+                </div>
+                <!--  Penatua 2 -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <img src="https://placehold.co/120x120/cccccc/ffffff?text=Foto" class="w-24 h-24 rounded-full mx-auto mb-3">
+                    <h4 class="font-semibold">St. [Nama Penatua 2]</h4>
+                    <p class="text-sm text-gray-500">Sektor 2</p>
+                </div>
+                 <!--  Penatua 3 -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <img src="https://placehold.co/120x120/cccccc/ffffff?text=Foto" class="w-24 h-24 rounded-full mx-auto mb-3">
+                    <h4 class="font-semibold">St. [Nama Penatua 3]</h4>
+                    <p class="text-sm text-gray-500">Bendahara</p>
+                </div>
+                 <!-- Penatua 4 -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <img src="https://placehold.co/120x120/cccccc/ffffff?text=Foto" class="w-24 h-24 rounded-full mx-auto mb-3">
+                    <h4 class="font-semibold">St. [Nama Penatua 4]</h4>
+                    <p class="text-sm text-gray-500">Sekretaris</p>
+                </div>
+                 <!--  Penatua 5 -->
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <img src="https://placehold.co/120x120/cccccc/ffffff?text=Foto" class="w-24 h-24 rounded-full mx-auto mb-3">
+                    <h4 class="font-semibold">St. [Nama Penatua 5]</h4>
+                    <p class="text-sm text-gray-500">Sektor 3</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 GKPI Cimahi. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

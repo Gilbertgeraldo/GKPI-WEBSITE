@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - GKPI Cimahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-logo-blue { background-color: #0D47A1; }
+        .text-logo-blue { color: #0D47A1; }a
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen bg-gray-200">
+        <!-- Sidebar -->
+        <div class="w-64 bg-logo-blue text-white p-5 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center mb-10">
+                    <img src="https://i.ibb.co/9gfYs7B/image-fa3aac.png" alt="Logo" class="h-10 w-10 mr-3">
+                    <span class="text-xl font-bold">Dashboard GKPI</span>
+                </div>
+                <nav>
+                    <a href="dashboard.html" class="block py-2.5 px-4 rounded transition duration-200 bg-blue-700">Beranda</a>
+                    <a href="profile.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">Profil Jemaat</a>
+                    <a href="struktural.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">Struktural</a>
+                    <a href="../berita/list.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">Manajemen Berita</a>
+                    <a href="../galeri/foto.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700">Manajemen Galeri</a>
+                </nav>
+            </div>
+            <div>
+                 <a href="../index.html" class="block text-center py-2.5 px-4 rounded transition duration-200 bg-red-600 hover:bg-red-700">Logout</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="flex justify-between items-center p-6 bg-white border-b">
+                <h1 class="text-2xl font-bold text-gray-800">Selamat Datang, [Nama Pengguna]!</h1>
+                <div>
+                    <!-- User profile icon -->
+                </div>
+            </header>
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+                <h2 class="text-xl font-semibold mb-4">Ringkasan</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1: Jumlah Jemaat -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Total Jemaat</h3>
+                        <p class="text-3xl font-bold text-logo-blue">150</p>
+                    </div>
+                    <!-- Card 2: Berita Terbaru -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Berita Terpublikasi</h3>
+                        <p class="text-3xl font-bold text-logo-blue">25</p>
+                    </div>
+                    <!-- Card 3: Acara Mendatang -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Acara Mendatang</h3>
+                        <p class="text-3xl font-bold text-logo-blue">3</p>
+                    </div>
+                     <!-- Card 4: Pesan Masuk -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Pesan Baru</h3>
+                        <p class="text-3xl font-bold text-logo-blue">5</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Notifikasi Penting</h3>
+                    <ul>
+                        <li class="border-b py-2">Rapat majelis akan diadakan pada hari Sabtu pukul 19:00.</li>
+                        <li class="border-b py-2">Jadwal pelayanan mimbar untuk bulan depan telah terbit.</li>
+                        <li class="py-2">Pendaftaran baptisan anak telah dibuka.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

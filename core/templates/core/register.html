@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran - GKPI Cimahi</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Static Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-logo-blue { background-color: #0D47A1; }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen py-12">
+
+    <div class="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
+        <div class="text-center mb-8">
+            <img src="{% static 'image/gkpi.png' %}" alt="Logo GKPI Cimahi" class="h-20 w-20 mx-auto mb-4">
+            <h1 class="text-2xl font-bold text-gray-800">Pendaftaran Jemaat Baru</h1>
+            <p class="text-gray-500">Isi formulir di bawah untuk mendaftar</p>
+        </div>
+
+        <!-- Menampilkan pesan jika ada -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Form Pendaftaran dengan Styling Manual -->
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            
+            <!-- Field Username -->
+            <div class="mb-4">
+                <label for="{{ form.username.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input 
+                    type="text" 
+                    name="{{ form.username.name }}" 
+                    id="{{ form.username.id_for_label }}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    required>
+                {% for error in form.username.errors %}
+                    <p class="text-red-500 text-xs italic mt-2">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <!-- Field Password 1 -->
+            <div class="mb-4">
+                <label for="{{ form.password1.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input 
+                    type="password" 
+                    name="{{ form.password1.name }}" 
+                    id="{{ form.password1.id_for_label }}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    required>
+                {% for error in form.password1.errors %}
+                    <p class="text-red-500 text-xs italic mt-2">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <!-- Field Password 2 (Konfirmasi) -->
+            <div class="mb-6">
+                <label for="{{ form.password2.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Konfirmasi Password</label>
+                <input 
+                    type="password" 
+                    name="{{ form.password2.name }}" 
+                    id="{{ form.password2.id_for_label }}" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    required>
+                {% for error in form.password2.errors %}
+                    <p class="text-red-500 text-xs italic mt-2">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="mt-6">
+                <button type="submit" class="w-full bg-logo-blue hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300">
+                    Daftar
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center mt-6">
+            <p class="text-sm text-gray-600">
+                Sudah punya akun?
+                <a href="{% url 'login' %}" class="font-bold text-blue-600 hover:text-blue-800">Login di sini</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
